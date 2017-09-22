@@ -21,7 +21,7 @@ def parse_morphs(string):
     return json.dump(res_dict)
 
 @app.route('/pos/<string>')
-def parse_morphs(string):
+def parse_pos(string):
     res_dict = dict()
     res_dict['res'] = mecab.pos(string)
     return json.dump(res_dict)
