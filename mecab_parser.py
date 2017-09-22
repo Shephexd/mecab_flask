@@ -1,4 +1,4 @@
-from flask import Flask, session
+from flask import Flask, session, jsonify
 from konlpy.tag import Mecab
 from collections import defaultdict
 
@@ -12,19 +12,19 @@ def hello_world():
 def parse_nouns(string):
     res_dict = dict()
     res_dict['res'] = mecab.nouns(string)
-    return json.dump(res_dict)
+    return jsonify(**res_dict)
 
 @app.route('/pos/morphs/<string>')
 def parse_morphs(string):
     res_dict = dict()
     res_dict['res'] = mecab.morphs(string)
-    return json.dump(res_dict)
+    return jsonify(**res_dict)
 
 @app.route('/pos/<string>')
 def parse_pos(string):
     res_dict = dict()
     res_dict['res'] = mecab.pos(string)
-    return json.dump(res_dict)
+    return jsonify(**res_dict)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
