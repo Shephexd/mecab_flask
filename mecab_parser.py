@@ -27,4 +27,4 @@ def parse_pos(string):
     return json.dump(res_dict)
 
 if __name__ == '__main__':
-    app.run(ip='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=8000)
