@@ -10,21 +10,21 @@ app = Flask(__name__)
 def hello_world():
     return 'parser is working'
 
-@app.route('/pos/nouns/', methods=['POST'])
+@app.route('/pos/nouns/', methods=['GET', 'POST'])
 def parse_nouns():
     res_dict = dict()
     string = request.form['text']
     res_dict['res'] = mecab.nouns(string)
     return json.dumps(res_dict)
 
-@app.route('/pos/morphs/', methods=['POST'])
+@app.route('/pos/morphs/', methods=['GET', 'POST'])
 def parse_morphs():
     res_dict = dict()
     string = request.form['text']
     res_dict['res'] = mecab.morphs(string)
     return json.dumps(res_dict)
 
-@app.route('/pos/', methods=['POST'])
+@app.route('/pos/', methods=['GET', 'POST'])
 def parse_pos():
     res_dict = dict()
     string = request.form['text']
